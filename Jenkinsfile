@@ -26,7 +26,7 @@ pipeline {
             steps {
                 sh '''
                     # Command to start your backend service
-                    nohup java -jar Products-0.0.1-SNAPSHOT.jar &
+                    nohup java -jar target/Products-0.0.1-SNAPSHOT.jar &
                     sleep 30  # Give the service some time to start up
                 '''
             }
