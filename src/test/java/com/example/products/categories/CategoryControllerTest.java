@@ -21,7 +21,7 @@ public class CategoryControllerTest {
 
     @BeforeEach
     public void setup() {
-        RestAssured.baseURI = "http://localhost:8080";
+        RestAssured.baseURI = "http://localhost:8081";
     }
 
     @Test
