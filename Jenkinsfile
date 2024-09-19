@@ -22,6 +22,15 @@ pipeline {
                 sh 'mvn test -Dtest.port=${TEST_PORT}'
             }
         }
+        stage('Start Backend Service') {
+            steps {
+                sh '''
+                    # Command to start your backend service
+                    nohup java -jar Products.jar &
+                    sleep 30  # Give the service some time to start up
+                '''
+            }
+        }
     }
 
     post {

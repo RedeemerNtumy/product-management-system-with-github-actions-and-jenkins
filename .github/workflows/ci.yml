@@ -23,8 +23,8 @@ jobs:
       - name: Start backend service
         run: |
           # Command to start your backend service
-          nohup java -jar your-backend-service.jar &
-          sleep 30 
+          nohup java -jar Products.jar &
+          sleep 30  # Give the service some time to start up
 
       - name: Build with Maven
         run: mvn clean test -Dtest.port=8081
