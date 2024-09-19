@@ -18,6 +18,7 @@
 
 	<properties>
 		<java.version>21</java.version>
+		<test.port>8081</test.port>
 	</properties>
 
 	<dependencies>

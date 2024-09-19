@@ -1,5 +1,8 @@
 pipeline {
     agent any
+     environment {
+            TEST_PORT = '8081'
+        }
 
     stages {
         stage('Checkout') {
@@ -16,7 +19,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'mvn test'
+                sh 'mvn test -Dtest.port=${TEST_PORT}'
             }
         }
     }
