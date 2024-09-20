@@ -20,12 +20,19 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Start MySQL service
+        run: sudo systemctl start mysql.service
+
+      - name: Create ESTORE database
+        run: |
+          mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS ESTORE;"
+
       - name: Build with Maven
         run: mvn clean install -DskipTests
 
       - name: Start backend service
         run: |
-          nohup java -jar target/Products-0.0.1-SNAPSHOT.jar & sleep 30  
+          nohup java -jar target/Products-0.0.1-SNAPSHOT.jar & sleep 30
 
       - name: Run Tests
         run: mvn test -Dtest.port=8081
