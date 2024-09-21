@@ -27,8 +27,8 @@ pipeline {
         stage('Start MySQL Service') {
             steps {
                 echo 'Starting MySQL service...'
-                sh 'mysqld --daemonize'
-                sh 'mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS ESTORE;"'
+                sh '/usr/local/mysql/bin/mysqld --daemonize'
+                sh '/usr/local/mysql/bin/mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS ESTORE;"'
             }
         }
 
