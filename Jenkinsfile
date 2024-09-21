@@ -23,12 +23,11 @@ pipeline {
         stage('Start MySQL Service') {
             steps {
                 echo 'Starting MySQL service...'
-                sh 'echo "redeemerntumy4019" | sudo -S /usr/local/mysql/bin/mysqld --daemonize --mysql-native-password=ON'
-
+                sh '/usr/local/mysql/bin/mysqld --daemonize --mysql-native-password=ON'
                 sleep 5
                 script {
                     try {
-                        sh 'sudo /usr/local/mysql/bin/mysql -uredeemer -pyour_password --default-auth=mysql_native_password -e "CREATE DATABASE IF NOT EXISTS ESTORE;"'
+                        sh '/usr/local/mysql/bin/mysql -uredeemer -pyour_password --default-auth=mysql_native_password -e "CREATE DATABASE IF NOT EXISTS ESTORE;"'
                     } catch (Exception e) {
                         echo "Error connecting to MySQL: ${e.getMessage()}"
                         error "Failed to connect to MySQL"
