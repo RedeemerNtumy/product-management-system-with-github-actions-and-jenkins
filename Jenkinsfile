@@ -49,7 +49,7 @@ pipeline {
     post {
         always {
             echo 'Post-build actions:'
-            junit 'target/surefire-reports/*.xml'
+//             junit 'target/surefire-reports/*.xml'
             script {
                 def jobName = env.JOB_NAME
                 def buildNumber = env.BUILD_NUMBER
