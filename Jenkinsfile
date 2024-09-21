@@ -27,8 +27,8 @@ pipeline {
         stage('Start MySQL Service') {
             steps {
                 echo 'Starting MySQL service...'
-                sh '/usr/local/mysql-8.4.0-macos14-arm64/bin/mysql --daemonize'
-                sh '/usr/local/mysql-8.4.0-macos14-arm64/bin/mysql -uredeemer -ppassword -e "CREATE DATABASE IF NOT EXISTS ESTORE;"'
+                sh '/usr/local/mysql/bin/mysqld --daemonize'
+                sh '/usr/local/mysql/bin/mysql -uredeemer -ppassword -e "CREATE DATABASE IF NOT EXISTS ESTORE;"'
             }
         }
 
