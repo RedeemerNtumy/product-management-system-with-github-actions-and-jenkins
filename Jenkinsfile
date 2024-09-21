@@ -27,7 +27,7 @@ pipeline {
         stage('Start MySQL Service') {
             steps {
                 echo 'Starting MySQL service...'
-                sh '/usr/local/mysql/bin/mysqld --daemonize'
+                sh '/usr/local/mysql/bin/mysqld --daemonize --mysql-native-password=ON'
                 sh '/usr/local/mysql/bin/mysql -uredeemer -ppassword -e "CREATE DATABASE IF NOT EXISTS ESTORE;"'
             }
         }
