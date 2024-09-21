@@ -23,7 +23,8 @@ pipeline {
         stage('Start MySQL Service') {
             steps {
                 echo 'Starting MySQL service...'
-                sh 'sudo /usr/local/mysql/bin/mysqld --daemonize --mysql-native-password=ON'
+                sh 'echo "redeemerntumy4019" | sudo -S /usr/local/mysql/bin/mysqld --daemonize --mysql-native-password=ON'
+
                 sleep 5
                 script {
                     try {
