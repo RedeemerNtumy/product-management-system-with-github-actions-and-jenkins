@@ -25,14 +25,7 @@ pipeline {
                 echo 'Starting MySQL service...'
                 sh '/usr/local/mysql/bin/mysqld --daemonize --mysql-native-password=ON'
                 sleep 5
-                script {
-                    try {
-                        sh '/usr/local/mysql/bin/mysql -uroot -proot --default-auth=mysql_native_password -e "CREATE DATABASE IF NOT EXISTS ESTORE;"'
-                    } catch (Exception e) {
-                        echo "Error connecting to MySQL: ${e.getMessage()}"
-                        error "Failed to connect to MySQL"
-                    }
-                }
+               sh '/usr/local/mysql/bin/mysql -uroot -proot --default-auth=mysql_native_password -e "CREATE DATABASE IF NOT EXISTS ESTORE;"'
             }
         }
 
