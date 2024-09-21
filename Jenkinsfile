@@ -27,7 +27,7 @@ pipeline {
         stage('Start MySQL Service') {
             steps {
                 echo 'Starting MySQL service...'
-                sh 'sudo systemctl start mysql.service'
+                sh 'mysqld --daemonize'
                 sh 'mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS ESTORE;"'
             }
         }
