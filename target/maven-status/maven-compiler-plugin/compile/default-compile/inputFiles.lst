@@ -1,0 +1,11 @@
+/Users/redeemer/IdeaProjects/Products/src/main/java/com/example/products/ProductsApplication.java
+/Users/redeemer/IdeaProjects/Products/src/main/java/com/example/products/controller/CategoryController.java
+/Users/redeemer/IdeaProjects/Products/src/main/java/com/example/products/controller/ProductController.java
+/Users/redeemer/IdeaProjects/Products/src/main/java/com/example/products/model/Category.java
+/Users/redeemer/IdeaProjects/Products/src/main/java/com/example/products/model/Product.java
+/Users/redeemer/IdeaProjects/Products/src/main/java/com/example/products/model/Subcategory.java
+/Users/redeemer/IdeaProjects/Products/src/main/java/com/example/products/repository/CategoryRepository.java
+/Users/redeemer/IdeaProjects/Products/src/main/java/com/example/products/repository/ProductRepository.java
+/Users/redeemer/IdeaProjects/Products/src/main/java/com/example/products/repository/SubcategoryRepository.java
+/Users/redeemer/IdeaProjects/Products/src/main/java/com/example/products/service/CategoryService.java
+/Users/redeemer/IdeaProjects/Products/src/main/java/com/example/products/service/ProductService.java

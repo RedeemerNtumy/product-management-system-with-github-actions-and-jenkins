@@ -1,0 +1,12 @@
+com/example/products/model/Category.class
+com/example/products/repository/ProductRepository.class
+com/example/products/service/ProductService.class
+com/example/products/controller/ProductController.class
+com/example/products/repository/CategoryRepository.class
+com/example/products/repository/SubcategoryRepository.class
+com/example/products/controller/ProductController$UpdateRequest.class
+com/example/products/controller/CategoryController.class
+com/example/products/service/CategoryService.class
+com/example/products/model/Product.class
+com/example/products/model/Subcategory.class
+com/example/products/ProductsApplication.class
