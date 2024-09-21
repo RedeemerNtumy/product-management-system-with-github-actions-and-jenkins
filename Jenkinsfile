@@ -16,7 +16,9 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing dependencies...'
-                sh 'mvn clean install -DskipTests'
+                withMaven(maven: 'Maven 3.8.1') {
+                    sh 'mvn clean install -DskipTests'
+                }
             }
         }
 
