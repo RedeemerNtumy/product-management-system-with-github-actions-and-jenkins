@@ -27,7 +27,6 @@ pipeline {
                 sleep 5
                 script {
                     try {
-                        sh '/usr/local/mysql/bin/mysqladmin ping'
                         sh '/usr/local/mysql/bin/mysql -uredeemer -pyour_password --default-auth=mysql_native_password -e "CREATE DATABASE IF NOT EXISTS ESTORE;"'
                     } catch (Exception e) {
                         echo "Error connecting to MySQL: ${e.getMessage()}"
