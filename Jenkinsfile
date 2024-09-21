@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        TEST_PORT = '8081'
-    }
-
     tools {
         maven 'Maven 3.9.8'
     }
@@ -28,7 +24,16 @@ pipeline {
             steps {
                 echo 'Starting MySQL service...'
                 sh '/usr/local/mysql/bin/mysqld --daemonize --mysql-native-password=ON'
-                sh '/usr/local/mysql/bin/mysql -uredeemer -pyour_password -e "CREATE DATABASE IF NOT EXISTS ESTORE;"'
+                sleep 5
+                script {
+                    try {
+                        sh '/usr/local/mysql/bin/mysqladmin ping'
+                        sh '/usr/local/mysql/bin/mysql -uredeemer -pyour_password --default-auth=mysql_native_password -e "CREATE DATABASE IF NOT EXISTS ESTORE;"'
+                    } catch (Exception e) {
+                        echo "Error connecting to MySQL: ${e.getMessage()}"
+                        error "Failed to connect to MySQL"
+                    }
+                }
             }
         }
 
@@ -44,7 +49,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 echo 'Running tests...'
-                sh 'mvn test -Dtest.port=${TEST_PORT}'
+                sh 'mvn test'
             }
         }
     }
