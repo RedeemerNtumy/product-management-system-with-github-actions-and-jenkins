@@ -20,30 +20,30 @@ pipeline {
             }
         }
 
-        stage('Start MySQL Service') {
-            steps {
-                echo 'Starting MySQL service...'
-                sh '/usr/local/mysql/bin/mysqld --daemonize --mysql-native-password=ON'
-                sleep 5
-               sh '/usr/local/mysql/bin/mysql -uroot -proot --default-auth=mysql_native_password -e "CREATE DATABASE IF NOT EXISTS ESTORE;"'
-            }
-        }
-
-        stage('Start Backend Service') {
-            steps {
-                echo 'Starting backend service...'
-                sh '''
-                    nohup java -jar target/Products-0.0.1-SNAPSHOT.jar & sleep 30
-                '''
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                echo 'Running tests...'
-                sh 'mvn test'
-            }
-        }
+//         stage('Start MySQL Service') {
+//             steps {
+//                 echo 'Starting MySQL service...'
+//                 sh '/usr/local/mysql/bin/mysqld --daemonize --mysql-native-password=ON'
+//                 sleep 5
+//                sh '/usr/local/mysql/bin/mysql -uroot -proot --default-auth=mysql_native_password -e "CREATE DATABASE IF NOT EXISTS ESTORE;"'
+//             }
+//         }
+//
+//         stage('Start Backend Service') {
+//             steps {
+//                 echo 'Starting backend service...'
+//                 sh '''
+//                     nohup java -jar target/Products-0.0.1-SNAPSHOT.jar & sleep 30
+//                 '''
+//             }
+//         }
+//
+//         stage('Run Tests') {
+//             steps {
+//                 echo 'Running tests...'
+//                 sh 'mvn test'
+//             }
+//         }
     }
 
     post {
