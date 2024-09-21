@@ -51,6 +51,8 @@ jobs:
           steps:  ${{toJson(steps)}}
           text: 'Pipeline finished with status: ${{ job.status }}'
           channel: '#cicd'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           if: always()
 
 
