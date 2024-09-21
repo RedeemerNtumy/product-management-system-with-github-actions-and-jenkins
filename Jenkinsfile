@@ -20,6 +20,8 @@ pipeline {
             }
         }
 
+        // Commented because they were not working with Jenkins
+
 //         stage('Start MySQL Service') {
 //             steps {
 //                 echo 'Starting MySQL service...'
@@ -72,8 +74,8 @@ pipeline {
                     subject: "${jobName} - Build ${buildNumber} - ${pipelineStatus.toUpperCase()}",
                     body: body,
                     to: 'ntumyredeemer@gmail.com',
-                    from: 'jenkins@example.com',
-                    replyTo: 'jenkins@example.com',
+                    from: 'redreggae20@gmail.com',
+                    replyTo: 'redreggae20@gmail',
                     mimeType: 'text/html',
                     attachmentsPattern: 'target/surefire-reports/*.xml'
                 )
