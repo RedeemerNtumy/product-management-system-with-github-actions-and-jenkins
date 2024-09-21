@@ -5,6 +5,10 @@ pipeline {
         TEST_PORT = '8081'
     }
 
+    tools {
+        maven 'Maven 3.9.8'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -16,9 +20,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing dependencies...'
-                withMaven(maven: 'Maven 3.8.1') {
-                    sh 'mvn clean install -DskipTests'
-                }
+                sh 'mvn clean install -DskipTests'
             }
         }
 
