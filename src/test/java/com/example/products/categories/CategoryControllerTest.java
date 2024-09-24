@@ -25,22 +25,24 @@ public class CategoryControllerTest {
     }
 
     @Test
-    @Order(1) // Run first
+    @Order(1)
     public void testCreateCategory() {
         String categoryName = "Academics";
 
         Response response = given()
+
                 .param("name", categoryName)
                 .when()
                 .post("/api/categories")
                 .then()
                 .statusCode(200)
+                .log().body()
                 .body("name", equalTo(categoryName))
                 .extract().response();
     }
 
     @Test
-    @Order(2) // Run second
+    @Order(2)
     public void testUpdateCategory() {
         Map<String, String> body = new HashMap<>();
         body.put("name", "Updated Category");
@@ -52,17 +54,18 @@ public class CategoryControllerTest {
                 .put("/api/categories/1")
                 .then()
                 .statusCode(200)
+                .log().body()
                 .body("name", equalTo("Updated Category"));
 
     }
 
     @Test
-    @Order(3) // Run third
+    @Order(3)
     public void testAddSubcategory() {
         int categoryId = 1;
         String subcategoryName = "Mobile Phones";
 
-        given()
+        given() .log().all()
                 .param("name", subcategoryName)
                 .when()
                 .post("/api/categories/" + categoryId + "/subcategories")
@@ -72,11 +75,11 @@ public class CategoryControllerTest {
     }
 
     @Test
-    @Order(4) // Run fourth
+    @Order(4)
     public void testGetCategoryWithSubcategories() {
         int categoryId = 1;
 
-        given()
+        given() .log().all()
                 .when()
                 .get("/api/categories/" + categoryId)
                 .then()
@@ -88,7 +91,7 @@ public class CategoryControllerTest {
     @Test
     @Order(5)
     public void testGetAllCategories() {
-        given()
+        given() .log().all()
                 .when()
                 .get("/api/categories")
                 .then()
@@ -99,7 +102,7 @@ public class CategoryControllerTest {
     @Test
     @Order(6)
     public void testGetAllSubcategories() {
-        given()
+        given() .log().all()
                 .when()
                 .get("/api/categories/subcategories")
                 .then()
@@ -112,7 +115,7 @@ public class CategoryControllerTest {
     public void testGetSubcategoriesByCategory() {
         int categoryId = 1;
 
-        given()
+        given() .log().all()
                 .when()
                 .get("/api/categories/" + categoryId + "/subcategories")
                 .then()
@@ -125,7 +128,7 @@ public class CategoryControllerTest {
     public void testDeleteSubcategory() {
         int subcategoryId = 1;
 
-        given()
+        given() .log().all()
                 .when()
                 .delete("/api/categories/1/subcategories/" + subcategoryId)
                 .then()
@@ -137,7 +140,7 @@ public class CategoryControllerTest {
     public void testDeleteCategory() {
         int categoryId = 1;
 
-        given()
+        given() .log().all()
                 .when()
                 .delete("/api/categories/" + categoryId)
                 .then()
@@ -149,7 +152,7 @@ public class CategoryControllerTest {
     public void testGetNonExistentCategory() {
         int categoryId = 1;
 
-        given()
+        given() .log().all()
                 .when()
                 .get("/api/categories/" + categoryId)
                 .then()
@@ -157,11 +160,11 @@ public class CategoryControllerTest {
     }
 
     @Test
-    @Order(11) // Attempt to retrieve a non-existent product
+    @Order(11)
     public void testGetNonExistentProduct() {
-        Long nonExistentProductId = 9999L; // Assuming this product doesn't exist
+        Long nonExistentProductId = 9999L;
 
-        given()
+        given() .log().all()
                 .contentType(ContentType.JSON)
                 .when()
                 .get("/api/products/" + nonExistentProductId)
@@ -172,7 +175,7 @@ public class CategoryControllerTest {
     @Test
     @Order(12) // Get all products
     public void testGetAllProducts() {
-        given()
+        given() .log().all()
                 .contentType(ContentType.JSON)
                 .when()
                 .get("/api/products")
